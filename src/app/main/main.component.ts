@@ -23,6 +23,7 @@ export class MainComponent implements OnInit {
   totalRedStones: number = 9;
   animX:number = 0;
   animY:number = 0;
+  isDragComleted: boolean = true;
 
   constructor(private gameElementService: GameElementsService) { }
 
@@ -32,14 +33,14 @@ export class MainComponent implements OnInit {
     for (let i=0 ; i<42 ; i++){
       if (i<24){
         this.stones.push({
-          cssStyle : 'position: absolute; height: 50px; width: 50px; border-radius: 50%; border: 2px solid green;'
+          cssStyle : 'position: absolute; height: 50px; width: 50px; border-radius: 50%;'
         });
       } else this.reserves.push(i)
     }
   }
 
   allowDrop(ev) {
-		this.droppedTitle = parseInt(ev.target.id);
+    this.droppedTitle = parseInt(ev.target.id);
 		let controlNumber = this.draggedTitle > 24 ? 24 : this.draggedTitle;
 		if (this.whoIsNext === Colour.BLUE && this.totalBlueStones === 3 || this.whoIsNext === Colour.RED && this.totalRedStones === 3) {
 			controlNumber = 24;
@@ -50,23 +51,18 @@ export class MainComponent implements OnInit {
   }
 
 	drag(ev) {
-		this.stoneNumber = parseInt(ev.target.id);
-		if (ev.target.parentNode.parentNode.id === "reserve") {
-			this.draggedTitle = this.stoneNumber;
-		} else {
-			this.draggedTitle = parseInt(ev.target.parentNode.parentNode.id);
-		}
-
+		this.stoneNumber = parseInt(ev.target.id)[0];
+		this.draggedTitle = parseInt(ev.target.parentNode.id);
 		if (this.whoIsNext === Colour.BLUE && this.stoneNumber > 32 || this.whoIsNext === Colour.RED && this.stoneNumber < 33) {
 			ev.preventDefault();
 		}
-		ev.dataTransfer.setData("text", ev.target.id);
+    ev.dataTransfer.setData("text", ev.target.id);
   }
 
 	drop(ev) {
 		ev.preventDefault();
-		const data = ev.dataTransfer.getData("text");
-		const stone = document.getElementById(data);
+    const data = ev.dataTransfer.getData("text");
+    const stone = document.getElementById(data);
 		if (this.draggedTitle > 23) {
 			stone.classList.remove("blueStonesCSS");
 			stone.classList.remove("redStonesCSS");
@@ -119,23 +115,20 @@ export class MainComponent implements OnInit {
 
   calculatePositions() {
     let redMoveArray = this.gameElementService.calculateNewMove(this.tileColours, this.whoIsNext);
-    for (let i=33 ; i<42 ; i++){
-      if (this.tileColours.get(i)===Colour.RED){
-        redMoveArray[0] = i;
-        break;
-      }
-    }
-    const start = document.getElementById(redMoveArray[0].toString());
+    const start = document.getElementById(redMoveArray[0].toString()).firstElementChild;
     const target = document.getElementById(redMoveArray[1].toString());
     const transX = target.getBoundingClientRect().left - start.getBoundingClientRect().left;
     const transY = target.getBoundingClientRect().top - start.getBoundingClientRect().top;
-    console.log(transX, transY);
+    console.log(redMoveArray);
 		anime({
       targets: start,
-			translateX: target.getBoundingClientRect().left - start.getBoundingClientRect().left,
-      translateY: target.getBoundingClientRect().top - start.getBoundingClientRect().top,
+			translateX: transX,
+      translateY: transY,
 			duration: 1000,
 			easing: 'linear'
+    }, ()=> {
+      start.removeAttribute('style');
+      target.appendChild(start);
     });
     this.whoIsNext = this.whoIsNext === Colour.BLUE ? Colour.RED : Colour.BLUE;
     this.tileColours.set(redMoveArray[0], Colour.WHITE);

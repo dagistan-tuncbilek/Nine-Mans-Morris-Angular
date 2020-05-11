@@ -15,21 +15,19 @@
       ></div>
     </div>
     <div id= "reserve" *ngFor="let stone of reserves; let i = index">
-      <div *ngIf="i < 9">
+      <div id={{stone}} class="blueStonesCSS stone{{stone}}" *ngIf="i < 9">
         <img
-          id={{stone}}
+          id=blue{{stone}}
           src="../assets/images/blue.png"
-          class="blueStonesCSS stone{{stone}}"
           draggable="true"
           (click)="onClick($event, i+23)"
           (dragstart)="drag($event)"
         />
       </div>
-      <div *ngIf="i > 8">
+      <div id={{stone}} class="redStonesCSS stone{{stone}}"  *ngIf="i > 8">
         <img
-          id={{stone}}
+          id=red{{stone}}
           src="../assets/images/red.png"
-          class="redStonesCSS stone{{stone}}"
           draggable="true"
           (click)="onClick($event, i+23)"
           (dragstart)="drag($event)"
@@ -37,7 +35,7 @@
       </div>
     </div>
   </div>
-  <div class="col-3">
+  <!-- <div class="col-3">
     <app-instructions></app-instructions>
-  </div>
+  </div> -->
 </div>
