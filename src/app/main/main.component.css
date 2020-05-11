@@ -1,8 +1,13 @@
 .img{
   position: absolute;
-  left: 300px;
+  left: 400px;
   max-width: 100%;
   margin-top: 10px;
+}
+
+.deneme{
+  position: absolute;
+  height: 50px; width: 50px; border-radius: 50%; background-color: powderblue; z-index: -999;
 }
 
 .anim {
@@ -11,195 +16,183 @@
 .invisiable{
   visibility: hidden;
 }
-.shape {
+
+.blueStonesCSS{
   position: absolute;
-  margin-top: 10px;
-  margin-left: 300px;
-}
-.reserve-1 {
-  position: absolute;
-  margin-top: 50px;
-  margin-left: 50px;
   cursor: pointer;
 }
-.reserve-2 {
+.redStonesCSS {
   position: absolute;
-  margin-top: 350px;
-  margin-left: 50px;
   cursor: pointer;
 }
 
-.empty {
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-}
 .stone0 {
-  left: 2px;
-  top: 2px;
+  left: 390px;
+  top: 0px;
+
 }
 .stone1 {
-  left: 264px;
-  top: 2px;
+  left: 672px;
+  top: 0px;
 }
 .stone2 {
-  left: 522px;
-  top: 2px;
+  left: 954px;
+  top: 0px;
 }
 .stone3 {
-  left: 77px;
-  top: 77px;
+  left: 484px;
+  top: 94px;
 }
 .stone4 {
-  left: 264px;
-  top: 77px;
+  left: 672px;
+  top: 94px;
 }
 .stone5 {
-  left: 447px;
-  top: 77px;
+  left: 860px;
+  top: 94px;
 }
 .stone6 {
-  left: 152px;
-  top: 152px;
+  left: 578px;
+  top: 188px;
 }
 .stone7 {
-  left: 264px;
-  top: 152px;
+  left: 672px;
+  top: 188px;
 }
 .stone8 {
-  left: 372px;
-  top: 152px;
+  left: 766px;
+  top: 188px;
 }
 .stone9 {
-  left: 2px;
-  top: 264px;
+  left: 390px;
+  top: 282px;
 }
 .stone10 {
-  left: 77px;
-  top: 264px;
+  left: 484px;
+  top: 282px;
 }
 .stone11 {
-  left: 152px;
-  top: 264px;
+  left: 578px;
+  top: 282px;
 }
 .stone12 {
-  left: 372px;
-  top: 264px;
+  left: 766px;
+  top: 282px;
 }
 .stone13 {
-  left: 447px;
-  top: 264px;
+  left: 860px;
+  top: 282px;
 }
 .stone14 {
-  left: 522px;
-  top: 264px;
+  left: 954px;
+  top: 282px;
 }
 .stone15 {
-  left: 152px;
-  top: 372px;
+  left: 578px;
+  top: 376px;
 }
 .stone16 {
-  left: 264px;
-  top: 372px;
+  left: 672px;
+  top: 376px;
 }
 .stone17 {
-  left: 372px;
-  top: 372px;
+  left: 766px;
+  top: 376px;
 }
 .stone18 {
-  left: 77px;
-  top: 447px;
+  left: 484px;
+  top: 470px;
 }
 .stone19 {
-  left: 264px;
-  top: 447px;
+  left: 672px;
+  top: 470px;
 }
 .stone20 {
-  left: 447px;
-  top: 447px;
+  left: 860px;
+  top: 470px;
 }
 .stone21 {
-  left: 2px;
-  top: 522px;
+  left: 390px;
+  top: 564px;
 }
 .stone22 {
-  left: 264px;
-  top: 522px;
+  left: 672px;
+  top: 564px;
 }
 .stone23 {
-  left: 522px;
-  top: 522px;
+  left: 954px;
+  top: 564px;
 }
 
 .stone24 {
-  left: 0px;
-  top: 0px;
+  left: 50px;
+  top: 50px;
 }
 .stone25 {
-  left: 60px;
-  top: 0px;
+  left: 110px;
+  top: 50px;
 }
 .stone26 {
-  left: 120px;
-  top: 0px;
+  left: 170px;
+  top: 50px;
 }
 .stone27 {
-  left: 0px;
-  top: 60px;
+  left: 50px;
+  top: 110px;
 }
 .stone28 {
-  left: 60px;
-  top: 60px;
+  left: 110px;
+  top: 110px;
 }
 .stone29 {
-  left: 120px;
-  top: 60px;
+  left: 170px;
+  top: 110px;
 }
 .stone30 {
-  left: 0px;
-  top: 120px;
+  left: 50px;
+  top: 170px;
 }
 .stone31 {
-  left: 60px;
-  top: 120px;
+  left: 110px;
+  top: 170px;
 }
 .stone32 {
-  left: 120px;
-  top: 120px;
+  left: 170px;
+  top: 170px;
 }
 .stone33 {
-  left: 0px;
-  top: 0px;
+  left: 50px;
+  top: 350px;
 }
 .stone34 {
-  left: 60px;
-  top: 0px;
+  left: 110px;
+  top: 350px;
 }
 .stone35 {
-  left: 120px;
-  top: 0px;
+  left: 170px;
+  top: 350px;
 }
 .stone36 {
-  left: 0px;
-  top: 60px;
+  left: 50px;
+  top: 410px;
 }
 .stone37 {
-  left: 60px;
-  top: 60px;
+  left: 110px;
+  top: 410px;
 }
 .stone38 {
-  left: 120px;
-  top: 60px;
+  left: 170px;
+  top: 410px;
 }
 .stone39 {
-  left: 0px;
-  top: 120px;
+  left: 50px;
+  top: 470px;
 }
 .stone40 {
-  left: 60px;
-  top: 120px;
+  left: 110px;
+  top: 470px;
 }
 .stone41 {
-  left: 120px;
-  top: 120px;
+  left: 170px;
+  top: 470px;
 }

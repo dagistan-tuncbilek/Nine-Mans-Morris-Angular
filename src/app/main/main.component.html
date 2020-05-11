@@ -1,61 +1,43 @@
-<h1 class="text-center">Nine Man's Morris</h1>
+<h1 class="font-weight-bold text-center">Nine Man's Morris</h1>
 <div class="row">
-  <div class="col-8">
-        <div><img class="img" alt="table" src="../../assets/images/Schwarz.gif"></div>
-        <!-- <div id="table">
-            <div id="0" class="empty shape stone0" (drop)="drop($event)" (dragover)="allowDrop($event)"></div>
-            <div id="1" class="empty shape stone1" (drop)="drop($event)" (dragover)="allowDrop($event)"></div>
-            <div id="2" class="empty shape stone2" (drop)="drop($event)" (dragover)="allowDrop($event)"></div>
-            <div id="3" class="empty shape stone3" (drop)="drop($event)" (dragover)="allowDrop($event)"></div>
-            <div id="4" class="empty shape stone4" (drop)="drop($event)" (dragover)="allowDrop($event)"></div>
-            <div id="5" class="empty shape stone5" (drop)="drop($event)" (dragover)="allowDrop($event)"></div>
-            <div id="6" class="empty shape stone6" (drop)="drop($event)" (dragover)="allowDrop($event)"></div>
-            <div id="7" class="empty shape stone7" (drop)="drop($event)" (dragover)="allowDrop($event)"></div>
-            <div id="8" class="empty shape stone8" (drop)="drop($event)" (dragover)="allowDrop($event)"></div>
-            <div id="9" class="empty shape stone9" (drop)="drop($event)" (dragover)="allowDrop($event)"></div>
-            <div id="10" class="empty shape stone10" (drop)="drop($event)" (dragover)="allowDrop($event)"></div>
-            <div id="11" class="empty shape stone11" (drop)="drop($event)" (dragover)="allowDrop($event)"></div>
-            <div id="12" class="empty shape stone12" (drop)="drop($event)" (dragover)="allowDrop($event)"></div>
-            <div id="13" class="empty shape stone13" (drop)="drop($event)" (dragover)="allowDrop($event)"></div>
-            <div id="14" class="empty shape stone14" (drop)="drop($event)" (dragover)="allowDrop($event)"></div>
-            <div id="15" class="empty shape stone15" (drop)="drop($event)" (dragover)="allowDrop($event)"></div>
-            <div id="16" class="empty shape stone16" (drop)="drop($event)" (dragover)="allowDrop($event)"></div>
-            <div id="17" class="empty shape stone17" (drop)="drop($event)" (dragover)="allowDrop($event)"></div>
-            <div id="18" class="empty shape stone18" (drop)="drop($event)" (dragover)="allowDrop($event)"></div>
-            <div id="19" class="empty shape stone19" (drop)="drop($event)" (dragover)="allowDrop($event)"></div>
-            <div id="20" class="empty shape stone20" (drop)="drop($event)" (dragover)="allowDrop($event)"></div>
-            <div id="21" class="empty shape stone21" (drop)="drop($event)" (dragover)="allowDrop($event)"></div>
-            <div id="22" class="empty shape stone22" (drop)="drop($event)" (dragover)="allowDrop($event)"></div>
-            <div id="23" class="empty shape stone23" (drop)="drop($event)" (dragover)="allowDrop($event)"></div>
-        </div>
+  <div class="col-9">
+    <div>
+      <img class="img" alt="table" src="../../assets/images/Schwarz.gif" />
+    </div>
 
-        <div id="reserve">
-            <img id="24" src="../assets/images/blue.png"  class="reserve-1 empty stone24" draggable="true" (click)="onClick($event, 24)" (dragstart)="drag($event)">
-            <img id="25" src="../assets/images/blue.png"  class="reserve-1 empty stone25" draggable="true" (click)="onClick($event, 25)" (dragstart)="drag($event)">
-            <img id="26" src="../assets/images/blue.png"  class="reserve-1 empty stone26" draggable="true" (click)="onClick($event, 26)" (dragstart)="drag($event)">
-            <img id="27" src="../assets/images/blue.png"  class="reserve-1 empty stone27" draggable="true" (click)="onClick($event, 27)" (dragstart)="drag($event)">
-            <img id="28" src="../assets/images/blue.png"  class="reserve-1 empty stone28" draggable="true" (click)="onClick($event, 28)" (dragstart)="drag($event)">
-            <img id="29" src="../assets/images/blue.png"  class="reserve-1 empty stone29" draggable="true" (click)="onClick($event, 29)" (dragstart)="drag($event)">
-            <img id="30" src="../assets/images/blue.png"  class="reserve-1 empty stone30" draggable="true" (click)="onClick($event, 30)" (dragstart)="drag($event)">
-            <img id="31" src="../assets/images/blue.png"  class="reserve-1 empty stone31" draggable="true" (click)="onClick($event, 31)" (dragstart)="drag($event)">
-            <img id="32" src="../assets/images/blue.png"  class="reserve-1 empty stone32" draggable="true" (click)="onClick($event, 32)" (dragstart)="drag($event)">
-            <img id="33" src="../assets/images/red.png"  class="reserve-2 empty stone33" draggable="true" (click)="onClick($event, 33)" (dragstart)="drag($event)">
-            <img id="34" src="../assets/images/red.png"  class="reserve-2 empty stone34" draggable="true" (click)="onClick($event, 34)" (dragstart)="drag($event)">
-            <img id="35" src="../assets/images/red.png"  class="reserve-2 empty stone35" draggable="true" (click)="onClick($event, 35)" (dragstart)="drag($event)">
-            <img id="36" src="../assets/images/red.png"  class="reserve-2 empty stone36" draggable="true" (click)="onClick($event, 36)" (dragstart)="drag($event)">
-            <img id="37" src="../assets/images/red.png"  class="reserve-2 empty stone37" draggable="true" (click)="onClick($event, 37)" (dragstart)="drag($event)">
-            <img id="38" src="../assets/images/red.png"  class="reserve-2 empty stone38" draggable="true" (click)="onClick($event, 38)" (dragstart)="drag($event)">
-            <img id="39" src="../assets/images/red.png"  class="reserve-2 empty stone39" draggable="true" (click)="onClick($event, 39)" (dragstart)="drag($event)">
-            <img id="40" src="../assets/images/red.png"  class="reserve-2 empty stone40" draggable="true" (click)="onClick($event, 40)" (dragstart)="drag($event)">
-            <img id="41" src="../assets/images/red.png"  class="reserve-2 empty stone41" draggable="true" (click)="onClick($event, 41)" (dragstart)="drag($event)">
-        </div> -->
-
-
-
+    <div *ngFor="let stone of stones; let i = index">
+      <div
+        id={{i}}
+        class="stone{{i}}"
+        style="{{ stone.cssStyle }}"
+        (drop)="drop($event)"
+        (dragover)="allowDrop($event)"
+      ></div>
+    </div>
+    <div id= "reserve" *ngFor="let stone of reserves; let i = index">
+      <div *ngIf="i < 9">
+        <img
+          id={{stone}}
+          src="../assets/images/blue.png"
+          class="blueStonesCSS stone{{stone}}"
+          draggable="true"
+          (click)="onClick($event, i+23)"
+          (dragstart)="drag($event)"
+        />
+      </div>
+      <div *ngIf="i > 8">
+        <img
+          id={{stone}}
+          src="../assets/images/red.png"
+          class="redStonesCSS stone{{stone}}"
+          draggable="true"
+          (click)="onClick($event, i+23)"
+          (dragstart)="drag($event)"
+        />
+      </div>
+    </div>
   </div>
-  <div class="col-4" style="background-color: yellowgreen;">
+  <div class="col-3">
     <app-instructions></app-instructions>
   </div>
 </div>
-
-
