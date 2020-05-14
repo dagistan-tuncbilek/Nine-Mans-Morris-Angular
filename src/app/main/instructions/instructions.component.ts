@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-instructions',
@@ -7,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InstructionsComponent implements OnInit {
 
+  @Input("moves") moves: [];
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }

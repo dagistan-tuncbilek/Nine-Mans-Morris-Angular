@@ -5,9 +5,17 @@
   margin-top: 10px;
 }
 
-.deneme{
-  position: absolute;
-  height: 50px; width: 50px; border-radius: 50%; background-color: powderblue; z-index: -999;
+.blue{
+  width: 50px;
+  height: 50px;
+  background-color: blue;
+  border-radius: 50%;
+}
+.red{
+  width: 50px;
+  height: 50px;
+  background-color: red;
+  border-radius: 50%;
 }
 
 .anim {

@@ -1,4 +1,12 @@
-<div style="background-color: yellow; width: inherit; height: 600px;">
-  <h4 class="text-center">Instructions</h4>
+<div class="row">
+  <cdk-virtual-scroll-viewport itemSize="250" class="movesTable col-12">
+    <div *ngFor="let move of moves; ; let i = index">
+      <div *ngIf="i > 0; else header">
+        <p style="margin-left: 20px;">{{i}}. {{ move }}</p>
+      </div>
+      <ng-template #header>
+        <h5 class="font-weight-bold text-center">{{move}}</h5>
+      </ng-template>
+    </div>
+  </cdk-virtual-scroll-viewport>
 </div>
-

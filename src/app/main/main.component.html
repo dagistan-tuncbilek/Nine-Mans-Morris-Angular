@@ -14,28 +14,28 @@
         (dragover)="allowDrop($event)"
       ></div>
     </div>
-    <div id= "reserve" *ngFor="let stone of reserves; let i = index">
+    <div *ngFor="let stone of reserves; let i = index">
       <div id={{stone}} class="blueStonesCSS stone{{stone}}" *ngIf="i < 9">
-        <img
+        <div
           id=blue{{stone}}
-          src="../assets/images/blue.png"
+          class="blue"
           draggable="true"
           (click)="onClick($event, i+23)"
-          (dragstart)="drag($event)"
-        />
+          (dragstart)="drag($event)">
+        </div>
       </div>
       <div id={{stone}} class="redStonesCSS stone{{stone}}"  *ngIf="i > 8">
-        <img
-          id=red{{stone}}
-          src="../assets/images/red.png"
+        <div
+          id=blue{{stone}}
+          class="red"
           draggable="true"
           (click)="onClick($event, i+23)"
-          (dragstart)="drag($event)"
-        />
+          (dragstart)="drag($event)">
+        </div>
       </div>
     </div>
   </div>
-  <!-- <div class="col-3">
-    <app-instructions></app-instructions>
-  </div> -->
+  <div class="col-3">
+    <app-instructions [moves]="moves" ></app-instructions>
+  </div>
 </div>
