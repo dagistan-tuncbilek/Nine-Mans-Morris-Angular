@@ -2,7 +2,7 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { GameElementsService } from '../shared/game-elements.service';
 import { Colour } from '../shared/colour.enum';
 import anime from 'animejs/lib/anime.es.js';
-import { IsTreePieceInaRowService } from '../shared/istreepieceinarow.service';
+import { ControlRows } from '../shared/istreepieceinarow.service';
 import { DeleteTileColorService } from '../shared/delete-tile-color.service';
 import { CalculationService } from '../shared/calculation.service';
 
@@ -32,7 +32,7 @@ export class MainComponent implements OnInit {
   constructor(
     private gameElementService: GameElementsService,
     private deleteTileColorService: DeleteTileColorService,
-    private isTreePeaceInaRowService: IsTreePieceInaRowService,
+    private isTreePeaceInaRowService: ControlRows,
     private calculationService: CalculationService
   ) {}
 
@@ -62,7 +62,10 @@ export class MainComponent implements OnInit {
 
   allowDrop(ev) {
     this.droppedTitle = parseInt(ev.target.id);
-    let controlNumber = this.draggedTitle > 24 || this.totalBlueStones===3 ? 24 : this.draggedTitle;
+    let controlNumber =
+      this.draggedTitle > 24 || this.totalBlueStones === 3
+        ? 24
+        : this.draggedTitle;
     if (this.possibleTilesToMoves[controlNumber].includes(this.droppedTitle)) {
       ev.preventDefault();
     }
@@ -77,7 +80,6 @@ export class MainComponent implements OnInit {
       stone.classList.remove('redStonesCSS');
     }
     ev.target.appendChild(stone);
-    console.log(ev.target);
     this.tileColours.set(
       this.droppedTitle,
       this.tileColours.get(this.draggedTitle)
@@ -90,7 +92,7 @@ export class MainComponent implements OnInit {
       this.isTreePeaceInaRowService.controlRow(
         this.tileColours,
         this.droppedTitle,
-        this.isTreePeaceInaRowService.checkTile
+        this.isTreePeaceInaRowService.isTreeInARow
       )
     ) {
       this.selectedStoneForDelete = Colour.RED;
@@ -105,16 +107,13 @@ export class MainComponent implements OnInit {
 
   onClick(ev, stoneNumber: number) {
     if (this.selectedStoneForDelete === Colour.RED) {
-      console.log('clicked for delete');
       const selectedStone = document.getElementById(ev.target.id);
-      console.log(selectedStone);
       const parentStoneID = parseInt(selectedStone.parentElement.id);
-      console.log(parentStoneID);
       if (
         !this.isTreePeaceInaRowService.controlRow(
           this.tileColours,
           parentStoneID,
-          this.isTreePeaceInaRowService.checkTile
+          this.isTreePeaceInaRowService.isTreeInARow
         )
       ) {
         this.tileColours.set(parentStoneID, Colour.WHITE);
@@ -128,7 +127,6 @@ export class MainComponent implements OnInit {
         selectedStone.remove();
         this.totalRedStones -= 1;
         this.selectedStoneForDelete = Colour.WHITE;
-        console.log(selectedStone);
         this.isGameOver();
         if (this.whoIsNext === Colour.RED && this.totalRedStones > 2) {
           this.calculatePositions();
@@ -154,13 +152,11 @@ export class MainComponent implements OnInit {
     if (this.totalRedStones > 3) {
       redMoveArray = this.calculationService.calculateNewMove(
         this.tileColours,
-        Colour.RED,
         this.totalBlueStones
       );
     } else {
       redMoveArray = this.calculationService.calculateNewMoveLastTree(
         this.tileColours,
-        Colour.RED,
         this.totalBlueStones
       );
     }
@@ -192,7 +188,7 @@ export class MainComponent implements OnInit {
       this.isTreePeaceInaRowService.controlRow(
         this.tileColours,
         redMoveArray[1],
-        this.isTreePeaceInaRowService.checkTile
+        this.isTreePeaceInaRowService.isTreeInARow
       )
     ) {
       const blueTileForDelete: number = this.deleteTileColorService.getTileForDelete(

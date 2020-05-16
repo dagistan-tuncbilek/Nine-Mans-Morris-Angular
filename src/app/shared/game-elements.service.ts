@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Colour } from './colour.enum';
-import { IsTreePieceInaRowService } from './istreepieceinarow.service';
+import { ControlRows } from './istreepieceinarow.service';
 
 @Injectable({ providedIn: 'root' })
 export class GameElementsService {
 
-  constructor(private isTreePeaceInaRowService: IsTreePieceInaRowService) { }
+  constructor(private isTreePeaceInaRowService: ControlRows) { }
 
 	possibleTilesForMove()  {
     const moveList = [

@@ -4,7 +4,7 @@ import { Colour } from './colour.enum';
 @Injectable({
   providedIn: 'root'
 })
-export class IsTreePieceInaRowService {
+export class ControlRows {
 
   controlRow (tileColours:Map<number, Colour>, tile: number, method: Function ) {
 
@@ -112,13 +112,13 @@ export class IsTreePieceInaRowService {
 		return false;
   }
 
-  checkTile (tileColours: Map<number, Colour> , i: number, j: number, k: number): boolean  {
+  isTreeInARow (tileColours: Map<number, Colour> , i: number, j: number, k: number): boolean  {
 		const colour = tileColours.get(i);
 		if (tileColours.get(j) === colour && tileColours.get(k) === colour) return true;
 		return false;
   }
 
-  checkTileForTwoInARow (tileColours: Map<number, Colour> , i: number, j: number, k: number): boolean{
+  isTwoInARow (tileColours: Map<number, Colour> , i: number, j: number, k: number): boolean{
 
     if (tileColours.get(i) === Colour.WHITE && tileColours.get(k) === tileColours.get(j)) return true;
     if (tileColours.get(j) === Colour.WHITE && tileColours.get(k) === tileColours.get(i)) return true;

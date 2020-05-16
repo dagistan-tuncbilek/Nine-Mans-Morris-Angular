@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Colour } from '../shared/colour.enum';
-import { IsTreePieceInaRowService } from './istreepieceinarow.service';
+import { ControlRows } from './istreepieceinarow.service';
 import { GameElementsService } from './game-elements.service';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { GameElementsService } from './game-elements.service';
 })
 export class DeleteTileColorService {
   constructor(
-    private isTreePeaceInaRowService: IsTreePieceInaRowService,
+    private isTreePeaceInaRowService: ControlRows,
     private gameElementService: GameElementsService
   ) {}
 
@@ -40,7 +40,7 @@ export class DeleteTileColorService {
               this.isTreePeaceInaRowService.controlRow(
                 tempTileColours,
                 tileBlue,
-                this.isTreePeaceInaRowService.checkTile
+                this.isTreePeaceInaRowService.isTreeInARow
               )
             ) {
               for (let selectStoneToDelete of moveList[tileBlue]) {
@@ -49,7 +49,7 @@ export class DeleteTileColorService {
                   this.isTreePeaceInaRowService.controlRow(
                     tempTileColours,
                     selectStoneToDelete,
-                    this.isTreePeaceInaRowService.checkTile
+                    this.isTreePeaceInaRowService.isTreeInARow
                   )
                 ) {
                   return selectStoneToDelete;
@@ -68,7 +68,7 @@ export class DeleteTileColorService {
         !this.isTreePeaceInaRowService.controlRow(
           tileColours,
           randomNumber,
-          this.isTreePeaceInaRowService.checkTile
+          this.isTreePeaceInaRowService.isTreeInARow
         )
       ) {
         return randomNumber;
