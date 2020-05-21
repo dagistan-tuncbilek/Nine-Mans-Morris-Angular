@@ -1,36 +1,23 @@
-.img{
-
-  background-image: url('../../assets/images/Schwarz.gif');
+.img {
+  background-image: url("../../assets/images/Schwarz.gif");
   background-position: 400px 10px;
   background-repeat: no-repeat;
-
 }
 
-.blue{
+.blue {
   width: 50px;
   height: 50px;
   background-color: blue;
   border-radius: 50%;
 }
-.red{
+.red {
   width: 50px;
   height: 50px;
   background-color: red;
   border-radius: 50%;
 }
 
-.anim {
-  border-color: yellow solid 5px;
-}
-.invisiable{
-  visibility: hidden;
-}
-
-.blueStonesCSS{
-  position: absolute;
-  cursor: pointer;
-}
-.redStonesCSS {
+.stone {
   position: absolute;
   cursor: pointer;
 }
@@ -38,7 +25,6 @@
 .stone0 {
   left: 390px;
   top: 0px;
-
 }
 .stone1 {
   left: 672px;

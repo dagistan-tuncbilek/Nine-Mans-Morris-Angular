@@ -23,9 +23,6 @@ export class MainComponent implements OnInit {
   selectedStoneForDelete: Colour = Colour.WHITE;
   totalBlueStones: number = 9;
   totalRedStones: number = 9;
-  animX: number = 0;
-  animY: number = 0;
-  isDragComleted: boolean = true;
   preventDrag = false;
   moves = ['Moves'];
   @Output() changeMoves = new EventEmitter();
@@ -75,10 +72,6 @@ export class MainComponent implements OnInit {
     ev.preventDefault();
     const data = ev.dataTransfer.getData('text');
     const stone = document.getElementById(data);
-    if (this.draggedTitle > 23) {
-      stone.classList.remove('blueStonesCSS');
-      stone.classList.remove('redStonesCSS');
-    }
     ev.target.appendChild(stone);
     this.tileColours.set(
       this.droppedTitle,

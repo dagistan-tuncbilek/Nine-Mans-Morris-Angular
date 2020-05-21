@@ -12,7 +12,7 @@
       ></div>
     </div>
     <div *ngFor="let stone of reserves; let i = index">
-      <div id={{stone}} class="blueStonesCSS stone{{stone}}" *ngIf="i < 9">
+      <div id={{stone}} class="stone stone{{stone}}" *ngIf="i < 9">
         <div
           id=blue{{stone}}
           class="blue"
@@ -20,7 +20,7 @@
           (dragstart)="dragStart($event)">
         </div>
       </div>
-      <div id={{stone}} class="redStonesCSS stone{{stone}}"  *ngIf="i > 8">
+      <div id={{stone}} class="stone stone{{stone}}"  *ngIf="i > 8">
         <div
           id=blue{{stone}}
           class="red"
