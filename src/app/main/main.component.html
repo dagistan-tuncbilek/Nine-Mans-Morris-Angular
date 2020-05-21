@@ -1,9 +1,6 @@
 <h1 class="font-weight-bold text-center">Nine Man's Morris</h1>
 <div class="row">
-  <div class="col-9">
-    <div>
-      <img class="img" alt="table" src="../../assets/images/Schwarz.gif" />
-    </div>
+  <div class="col-9 img">
 
     <div *ngFor="let stone of stones; let i = index">
       <div
@@ -19,21 +16,21 @@
         <div
           id=blue{{stone}}
           class="blue"
-          draggable="true"
-          (click)="onClick($event, i+23)"
-          (dragstart)="drag($event)">
+          [draggable]="!preventDrag"
+          (dragstart)="dragStart($event)">
         </div>
       </div>
       <div id={{stone}} class="redStonesCSS stone{{stone}}"  *ngIf="i > 8">
         <div
           id=blue{{stone}}
           class="red"
-          (click)="onClick($event, i+23)">
+          draggable="false"
+          (click)="onClick($event)">
         </div>
       </div>
     </div>
   </div>
-  <!-- <div class="col-3">
+  <div class="col-3">
     <app-instructions [moves]="moves" ></app-instructions>
-  </div> -->
+  </div>
 </div>

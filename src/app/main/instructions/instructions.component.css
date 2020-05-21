@@ -1,5 +1,10 @@
 .movesTable {
-  background-color: yellow;
+  background-color: rgb(194, 243, 238);
   width: inherit;
   height: 600px;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 0;
 }

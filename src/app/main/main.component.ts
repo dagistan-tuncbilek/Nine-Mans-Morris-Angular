@@ -26,6 +26,7 @@ export class MainComponent implements OnInit {
   animX: number = 0;
   animY: number = 0;
   isDragComleted: boolean = true;
+  preventDrag = false;
   moves = ['Moves'];
   @Output() changeMoves = new EventEmitter();
 
@@ -49,14 +50,13 @@ export class MainComponent implements OnInit {
     }
   }
 
-  drag(ev) {
-    if (this.totalBlueStones > 2 && this.totalRedStones > 2) {
+  dragStart(ev) {
+    if (!this.preventDrag && this.totalBlueStones > 2 && this.totalRedStones > 2) {
       this.stoneNumber = parseInt(ev.target.id)[0];
       this.draggedTitle = parseInt(ev.target.parentNode.id);
-      if (this.whoIsNext === Colour.BLUE && this.stoneNumber > 32) {
-        ev.preventDefault();
-      }
       ev.dataTransfer.setData('text', ev.target.id);
+    } else {
+      ev.preventDefault();
     }
   }
 
@@ -85,7 +85,6 @@ export class MainComponent implements OnInit {
       this.tileColours.get(this.draggedTitle)
     );
     this.tileColours.set(this.draggedTitle, Colour.WHITE);
-    this.whoIsNext = this.whoIsNext === Colour.BLUE ? Colour.RED : Colour.BLUE;
     this.moves.push(this.droppedTitle + '-' + this.draggedTitle);
     this.changeMoves.emit(this.moves);
     if (
@@ -98,39 +97,33 @@ export class MainComponent implements OnInit {
       this.selectedStoneForDelete = Colour.RED;
     }
     if (
-      this.selectedStoneForDelete === Colour.WHITE &&
-      this.whoIsNext === Colour.RED
+      this.selectedStoneForDelete === Colour.WHITE
     ) {
+      this.whoIsNext = Colour.RED;
+      this.preventDrag = true;
       this.calculatePositions();
     }
   }
 
-  onClick(ev, stoneNumber: number) {
-    if (this.selectedStoneForDelete === Colour.RED) {
+  onClick(ev) {
+    if (!this.preventDrag && this.selectedStoneForDelete === Colour.RED) {
       const selectedStone = document.getElementById(ev.target.id);
       const parentStoneID = parseInt(selectedStone.parentElement.id);
-      if (
-        !this.isTreePeaceInaRowService.controlRow(
-          this.tileColours,
-          parentStoneID,
-          this.isTreePeaceInaRowService.isTreeInARow
-        )
-      ) {
-        this.tileColours.set(parentStoneID, Colour.WHITE);
-        this.whoIsNext === Colour.RED;
-        this.moves.push(
-          this.moves.pop() +
-            ' -> Red stone (' +
-            selectedStone.parentElement.id +
-            ') is deleted.'
-        );
-        selectedStone.remove();
-        this.totalRedStones -= 1;
-        this.selectedStoneForDelete = Colour.WHITE;
-        this.isGameOver();
-        if (this.whoIsNext === Colour.RED && this.totalRedStones > 2) {
-          this.calculatePositions();
-        }
+      this.tileColours.set(parentStoneID, Colour.WHITE);
+      this.moves.push(
+        this.moves.pop() +
+          ' -> Red stone (' +
+          selectedStone.parentElement.id +
+          ') is deleted.'
+      );
+      selectedStone.remove();
+      this.whoIsNext = Colour.RED;
+      this.selectedStoneForDelete = Colour.WHITE;
+      this.totalRedStones -= 1;
+      this.isGameOver();
+      if (this.whoIsNext === Colour.RED && this.totalRedStones > 2) {
+        this.preventDrag = true;
+        this.calculatePositions();
       }
     }
   }
@@ -143,7 +136,12 @@ export class MainComponent implements OnInit {
         this.totalRedStones
     );
     if (this.totalRedStones < 3 || this.totalBlueStones < 3) {
-      console.log('Game Over');
+      if (this.totalRedStones<3){
+        this.moves.push(" ------- GAME OVER - BLUE WINS --------");
+      } else {
+        this.moves.push(" ------- GAME OVER - RED WINS --------");
+      }
+      this.changeMoves.emit(this.moves);
     }
   }
 
@@ -181,7 +179,7 @@ export class MainComponent implements OnInit {
       },
     });
 
-    this.whoIsNext = this.whoIsNext === Colour.BLUE ? Colour.RED : Colour.BLUE;
+    this.whoIsNext = Colour.BLUE;
     this.tileColours.set(redMoveArray[0], Colour.WHITE);
     this.tileColours.set(redMoveArray[1], Colour.RED);
     if (
@@ -207,12 +205,13 @@ export class MainComponent implements OnInit {
         );
         blueStone.remove();
         this.totalBlueStones -= 1;
+        this.isGameOver();
       }, 1000);
     }
     this.moves.push(
       this.moves.pop() + ' : ' + start.parentElement.id + '-' + target.id
     );
     this.changeMoves.emit(this.moves);
-    this.isGameOver();
+    this.preventDrag = false;
   }
 }

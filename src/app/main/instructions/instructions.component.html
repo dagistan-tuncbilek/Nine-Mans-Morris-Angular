@@ -1,5 +1,5 @@
 <div class="row">
-  <cdk-virtual-scroll-viewport itemSize="250" class="movesTable col-12">
+  <cdk-virtual-scroll-viewport id="viewPort" itemSize="250" class="movesTable col-12">
     <div *ngFor="let move of moves; ; let i = index">
       <div *ngIf="i > 0; else header">
         <p style="margin-left: 20px;">{{i}}. {{ move }}</p>
