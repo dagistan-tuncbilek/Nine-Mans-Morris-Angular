@@ -131,8 +131,12 @@ export class MainComponent implements OnInit {
     if (this.totalRedStones < 3 || this.totalBlueStones < 3) {
       if (this.totalRedStones<3){
         this.moves.push(" ------- GAME OVER - BLUE WINS --------");
+        alert("WHITE WINS!!!");
+        this.newGame();
       } else {
         this.moves.push(" ------- GAME OVER - RED WINS --------");
+        alert("RED WINS!!!");
+        this.newGame();
       }
       this.changeMoves.emit(this.moves);
     }
@@ -206,5 +210,9 @@ export class MainComponent implements OnInit {
     );
     this.changeMoves.emit(this.moves);
     this.preventDrag = false;
+  }
+
+  newGame(){
+    location.reload();
   }
 }

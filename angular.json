@@ -124,6 +124,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "nine-mans-morris"
+    }
+  },
+  "defaultProject": "nine-mans-morris",
+  "cli": {
+    "analytics": "3c934fca-9cde-4743-bb9b-8887f644f437"
+  }
 }
