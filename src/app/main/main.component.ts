@@ -70,6 +70,7 @@ export class MainComponent implements OnInit {
 
   drop(ev) {
     ev.preventDefault();
+    new Audio("../../assets/audio/normalMove.wav").play();
     const data = ev.dataTransfer.getData('text');
     const stone = document.getElementById(data);
     ev.target.appendChild(stone);
@@ -100,6 +101,7 @@ export class MainComponent implements OnInit {
 
   onClick(ev) {
     if (!this.preventDrag && this.selectedStoneForDelete === Colour.RED) {
+      new Audio("../../assets/audio/deleteMove.wav").play();
       const selectedStone = document.getElementById(ev.target.id);
       const parentStoneID = parseInt(selectedStone.parentElement.id);
       this.tileColours.set(parentStoneID, Colour.WHITE);
@@ -131,10 +133,12 @@ export class MainComponent implements OnInit {
     if (this.totalRedStones < 3 || this.totalBlueStones < 3) {
       if (this.totalRedStones<3){
         this.moves.push(" ------- GAME OVER - BLUE WINS --------");
-        alert("WHITE WINS!!!");
+        new Audio("../../assets/audio/start.wav").play();
+        alert("BLUE WINS!!!");
         this.newGame();
       } else {
         this.moves.push(" ------- GAME OVER - RED WINS --------");
+        new Audio("../../assets/audio/start.wav").play();
         alert("RED WINS!!!");
         this.newGame();
       }
@@ -202,8 +206,11 @@ export class MainComponent implements OnInit {
         );
         blueStone.remove();
         this.totalBlueStones -= 1;
+        new Audio("../../assets/audio/deleteMove.wav").play();
         this.isGameOver();
       }, 1000);
+    } else {
+      setTimeout( () => new Audio("../../assets/audio/normalMove.wav").play(), 1000 );
     }
     this.moves.push(
       this.moves.pop() + ' : ' + start.parentElement.id + '-' + target.id
@@ -213,6 +220,7 @@ export class MainComponent implements OnInit {
   }
 
   newGame(){
+    new Audio("../../assets/audio/start.wav").play();
     location.reload();
   }
 }
